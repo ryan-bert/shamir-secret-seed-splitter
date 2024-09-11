@@ -1,0 +1,1 @@
+# shamir-secret-seed-splitter
