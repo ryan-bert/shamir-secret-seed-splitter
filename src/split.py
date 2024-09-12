@@ -10,3 +10,6 @@
 
 # TODO: Split private key into shares using shamir.py
 
+# TODO: Reconstruct private key from shares using shamir.py to validate
+
+# TODO: Save shares to file(s) & print message to console
