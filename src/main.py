@@ -1,5 +1,6 @@
 
 # TODO: CLI for arguments
+mode = input("")
 
 # TODO: If seed phrase, covert to master private key
 # - Validate seed phrase
