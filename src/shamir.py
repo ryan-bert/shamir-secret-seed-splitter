@@ -1,5 +1,6 @@
 from sympy import nextprime
 import random
+from sympy import mod_inverse
 
 def secret_split(secret, threshold, num_shares):
     """
@@ -44,7 +45,6 @@ def secret_split(secret, threshold, num_shares):
 
     return shares
 
-from sympy import mod_inverse
 
 def reconstruct(shares):
     """
