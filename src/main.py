@@ -1,4 +1,5 @@
 from shamir import secret_split, reconstruct
+from encoding import seed_phrase_to_private_key
 
 def main():
 
@@ -37,12 +38,8 @@ def split_mode():
             raise ValueError("Invalid private key format. Must be a valid hex string.") from e
     # Seed phrase validation & conversion
     elif input_type == "seed phrase":
-        
-
-
-    # TODO: Validate private key 
-    # - CLI for private key input 
-    # - Convert key to hex (ie validate hex characters)
+        seed_phrase = input("Enter seed phrase: ")
+        private_key = seed_phrase_to_private_key(seed_phrase)
 
     # TODO: Split private key into shares using shamir.py
 
