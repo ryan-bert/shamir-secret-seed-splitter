@@ -61,8 +61,18 @@ def split_mode():
 
 
 def reconstruct_mode():
-    pass
 
+    shares = []
+    # Load shares from file(s)
+    for i in range(5):
+        file_path = f"../input/share{i+1}.txt"
+        with open(file_path, "r") as file:
+            share = file.read()
+            shares.append(share)
+    # Reconstruct private key from shares
+    private_key = reconstruct(shares)
+    # Print reconstructed private key to console
+    print(f"Reconstructed private key: {private_key}")
 
 if __name__ == "__main__":
     main()
