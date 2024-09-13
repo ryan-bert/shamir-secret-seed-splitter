@@ -10,7 +10,12 @@ def seed_phrase_to_private_key(seed_phrase: str):
     # BIP32: Generate HMAC-SHA512 from seed.
     hmac_result = hmac.new(b"Bitcoin seed", seed, hashlib.sha512).digest()
     
-    # The master key is the first 32 bytes (256 bits) of the HMAC-SHA512 result
+    #  Master key is 1st 32 bytes
     master_key = hmac_result[:32]
+
+    try:
+        master_key = master_key.hex()
+    except Exception as e:
+        raise ValueError("Error converting master key to hex") from e
     
     return master_key
