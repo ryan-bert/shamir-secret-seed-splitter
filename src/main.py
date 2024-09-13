@@ -48,12 +48,16 @@ def split_mode():
     reconstructed_privat_key = reconstruct(shares)
     byte_string = bytes.fromhex(reconstructed_privat_key)
     reconstructed_privat_key = byte_string.hex()
-    if private_key == reconstructed_privat_key:
-        print("Private key successfully reconstructed from shares.")
-    else:
+    if private_key != reconstructed_privat_key:
         raise ValueError("Reconstructed private key does not match original private key.")
 
-    # TODO: Save shares to file(s) & print message to console
+    # Save shares to file(s) & print message to console
+    print("Shares generated successfully.")
+    # Save shares to file(s)
+    for i, share in enumerate(shares):
+        file_path = f"../output/share{i+1}.txt"
+        with open(file_path, "w") as file:
+            file.write(share)
 
 
 def reconstruct_mode():
