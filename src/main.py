@@ -42,7 +42,7 @@ def split_mode():
     # TODO: Save shares to file(s) & print message to console
 
 def reconstruct_mode():
-
+    pass
 
 
 if __name__ == "__main__":
