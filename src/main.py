@@ -24,12 +24,21 @@ def split_mode():
         input_type = "seed phrase"
     else:
         raise ValueError("Invalid input type. Please select 'private key' or 'seed phrase'.")
+    
+    private_key = None
 
-    # TODO: If seed phrase, covert to master private key
-    # - CLI for seed phrase input
-    # - Validate seed phrase
-    # - Convert to master private key using BIP39/BIP32
-    # - Convert key to hex
+    # Private key validation & hex conversion 
+    if input_type == "private key":
+        hex_string = input("Enter private key (hex): ")
+        try:
+            byte_string = bytes.fromhex(hex_string)
+            private_key = byte_string.hex()
+        except ValueError as e:
+            raise ValueError("Invalid private key format. Must be a valid hex string.") from e
+    # Seed phrase validation & conversion
+    elif input_type == "seed phrase":
+        
+
 
     # TODO: Validate private key 
     # - CLI for private key input 
