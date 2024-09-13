@@ -1,3 +1,4 @@
+from shamir import secret_split, reconstruct
 
 def main():
 
