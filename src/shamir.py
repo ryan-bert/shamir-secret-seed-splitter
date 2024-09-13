@@ -55,7 +55,7 @@ def reconstruct(shares):
                                       shares must be provided for successful reconstruction.
     
     Returns:
-    - int: The reconstructed secret.
+    - str: The reconstructed secret as a hexadecimal string.
     """
     
     # Set prime number (p) for finite field
@@ -77,4 +77,4 @@ def reconstruct(shares):
         # Add the contribution of current term to secret
         secret = (secret + y_i * lagrange_coefficient) % p
     
-    return secret
+    return hex(secret)

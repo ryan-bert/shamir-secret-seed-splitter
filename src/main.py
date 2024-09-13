@@ -26,9 +26,9 @@ def split_mode():
     else:
         raise ValueError("Invalid input type. Please select 'private key' or 'seed phrase'.")
     
-    private_key = None
 
     # Private key validation & hex conversion 
+    private_key = None
     if input_type == "private key":
         hex_string = input("Enter private key (hex): ")
         try:
@@ -41,11 +41,20 @@ def split_mode():
         seed_phrase = input("Enter seed phrase: ")
         private_key = seed_phrase_to_private_key(seed_phrase)
 
-    # TODO: Split private key into shares using shamir.py
+    # Split private key into shares
+    shares = secret_split(private_key, 3, 5)
 
-    # TODO: Reconstruct private key from shares using shamir.py to validate
+    # Reconstruct private key from shares using shamir.py to validate
+    reconstructed_privat_key = reconstruct(shares)
+    byte_string = bytes.fromhex(reconstructed_privat_key)
+    reconstructed_privat_key = byte_string.hex()
+    if private_key == reconstructed_privat_key:
+        print("Private key successfully reconstructed from shares.")
+    else:
+        raise ValueError("Reconstructed private key does not match original private key.")
 
     # TODO: Save shares to file(s) & print message to console
+
 
 def reconstruct_mode():
     pass
