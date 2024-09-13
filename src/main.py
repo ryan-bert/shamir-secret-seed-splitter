@@ -15,7 +15,6 @@ def main():
 
 def split_mode():
 
-
     # Input type selection (CLI)
     input_type = input("Select input type - private key (p)/seed phrase (s): ")
     # Input type validation
