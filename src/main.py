@@ -72,6 +72,9 @@ def reconstruct_mode():
     private_key = reconstruct(shares)
     # Print reconstructed private key to console
     print(f"Reconstructed private key: {private_key}")
+    # Save reconstructed private key to file
+    with open("../output/reconstructed_private_key.txt", "w") as file:
+        file.write(private_key)
 
 if __name__ == "__main__":
     main()
