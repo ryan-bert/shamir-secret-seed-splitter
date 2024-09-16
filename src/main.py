@@ -13,10 +13,12 @@ def main():
     else:
         raise ValueError("Invalid mode. Please select 'split' or 'reconstruct'.")
 
-def split_mode():
+import os
 
+def split_mode():
     # Input type selection (CLI)
     input_type = input("Select input type - private key (p)/seed phrase (s): ")
+    
     # Input type validation
     if input_type == "private key" or input_type == "p":
         input_type = "private key"
@@ -25,7 +27,6 @@ def split_mode():
     else:
         raise ValueError("Invalid input type. Please select 'private key' or 'seed phrase'.")
     
-
     # Private key validation & hex conversion 
     private_key = None
     if input_type == "private key":
@@ -35,29 +36,30 @@ def split_mode():
             private_key = byte_string.hex()
         except ValueError as e:
             raise ValueError("Invalid private key format. Must be a valid hex string.") from e
-    # Seed phrase validation & conversion
     elif input_type == "seed phrase":
         seed_phrase = input("Enter seed phrase: ")
         private_key = seed_phrase_to_private_key(seed_phrase)
 
     # Split private key into shares
-    shares = secret_split(private_key, 3, 5)
+    shares = secret_split(int(private_key, 16), 3, 5)
 
-    # Reconstruct private key from shares using shamir.py to validate
-    reconstructed_privat_key = reconstruct(shares)
-    byte_string = bytes.fromhex(reconstructed_privat_key)
-    reconstructed_privat_key = byte_string.hex()
-    if private_key != reconstructed_privat_key:
-        raise ValueError("Reconstructed private key does not match original private key.")
+    # Reconstruct private key from shares to validate
+    reconstructed_private_key = reconstruct(shares)
+    byte_string = bytes.fromhex(reconstructed_private_key[2:])      # Remove"0x" prefix
+    reconstructed_private_key = byte_string.hex()
+    if private_key != reconstructed_private_key:
+        raise ValueError("Reconstructed private key does not match the original private key.")
 
-    # Save shares to file(s) & print message to console
-    print("Shares generated successfully.")
+    # Get absolute path to 'output' directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    output_dir = os.path.join(current_dir, '../output')
+    
     # Save shares to file(s)
+    print("Shares generated successfully.")
     for i, share in enumerate(shares):
-        file_path = f"../output/share{i+1}.txt"
+        file_path = os.path.join(output_dir, f"share{i+1}.txt")
         with open(file_path, "w") as file:
-            file.write(share)
-
+            file.write(str(share))
 
 def reconstruct_mode():
 
