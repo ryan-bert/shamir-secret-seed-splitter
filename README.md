@@ -75,7 +75,28 @@ python reconstruct.py
 ```
 The reconstructed private key will be saved in ./reconstruct/output/reconstructed_private_key.txt.
 
-File Paths
+#### Private Key Example
+
+./split/input/private_key.txt:
+```
+a3b1c2d4e5f6789ab1c2d4e5f6789ab1c2d4e5f6789ab1c2d4e5f6789ab1c2d4
+```
+
+#### Share File Example
+
+./split/output/share1.txt:
+```
+pioneer zebra retreat learn stadium muffin sunset valve narrow leaf rescue close
+```
+
+#### Seed Phrase Example
+
+./split/input/seed_phrase.txt:
+```
+pioneer zebra retreat learn stadium muffin sunset valve narrow leaf rescue close
+```
+
+## File Paths
 
 - Splitting input: ./split/input/private_key.txt or ./split/input/seed_phrase.txt
 - Splitting output: ./split/output/share1.txt, ./split/output/share2.txt, …, shareN.txt
