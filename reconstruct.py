@@ -1,17 +1,6 @@
 import os
 from src.shamir import reconstruct
 
-def read_tuple_from_file(file_path):
-
-    with open(file_path, 'r') as file:
-        line = file.readline().strip()
-        tuple_values = line.strip('()').split(',')
-        value1 = int(tuple_values[0].strip())
-        value2 = int(tuple_values[1].strip())
-        
-        # Return the tuple
-        return (value1, value2)
-
 def main():
 
     # Load shares from all .txt files in the input directory
@@ -33,6 +22,17 @@ def main():
     with open(os.path.join(output_dir, "private_key.txt"), "w") as file:
         file.write(private_key)
     print("Reconstructed private key saved to file: private_key.txt")
+
+def read_tuple_from_file(file_path):
+
+    with open(file_path, 'r') as file:
+        line = file.readline().strip()
+        tuple_values = line.strip('()').split(',')
+        value1 = int(tuple_values[0].strip())
+        value2 = int(tuple_values[1].strip())
+        
+        # Return the tuple
+        return (value1, value2)
 
 if __name__ == "__main__":
     main()

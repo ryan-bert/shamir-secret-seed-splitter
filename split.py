@@ -31,7 +31,9 @@ def main():
             private_key = seed_phrase_to_private_key(seed_phrase)
 
     # Split private key into shares
-    shares = secret_split(int(private_key, 16), 3, 5)
+    num_shares = int(input("\nEnter the number of shares to generate: "))
+    threshold = int(input("Enter the threshold no. of shares required for reconstruction: "))
+    shares = secret_split(int(private_key, 16), threshold, num_shares)
 
     # Reconstruct private key from shares to validate
     reconstructed_private_key = reconstruct(shares)
