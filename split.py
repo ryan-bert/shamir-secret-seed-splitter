@@ -39,6 +39,8 @@ def main():
     reconstructed_private_key = byte_string.hex()
     if private_key != reconstructed_private_key:
         raise ValueError("Reconstructed private key does not match the original private key.")
+    else:
+        print("Shares successfully generated and validated.")
 
     # Save shares to file(s)
     for i, share in enumerate(shares):
