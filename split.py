@@ -42,18 +42,10 @@ def main():
 
     # Save shares to file(s)
     for i, share in enumerate(shares):
-        file_path = f'output/share{i}.txt'
-        share = str(share)
-        # Read the file contents
-        with open(file_path, 'r') as file:
-            lines = file.readlines()
-        if lines:
-            lines[0] = share
-        else:
-            lines.append(share)
-        # Write the file contents
+        file_path = f'./split/output/share{i + 1}.txt'
         with open(file_path, 'w') as file:
-            file.writelines(lines)
+            file.write(str(share))
+    print("Shares saved to './split/output'.")
 
 if __name__ == "__main__":
     main()
