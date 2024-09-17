@@ -2,7 +2,7 @@ import hmac
 import hashlib
 from mnemonic import Mnemonic
 
-def seed_phrase_to_private_key(seed_phrase: str, passphrase: str = '') -> str:
+def seed_phrase_to_private_key(seed_phrase, passphrase = ''):
     # Create Mnemonic instance
     mnemo = Mnemonic("english")
     
