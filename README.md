@@ -1,6 +1,6 @@
 # Shamir Secret Seed Splitter
 
-Shamir's Secret Seed Splitter is a Python application designed to securely split and reconstruct private keys or seed phrases using [Shamir's Secret Sharing Scheme (SSSS)](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing). This implementation allows users to split a private key or seed phrase into multiple shares, where only a threshold number of shares are required to reconstruct the original secret.
+Shamir’s Secret Seed Splitter is a Python application designed to securely split and reconstruct Bitcoin private keys or seed phrases using [Shamir’s Secret Sharing Scheme (SSSS)](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing). This implementation allows users to split a Bitcoin private key or seed phrase into multiple shares, where only a threshold number of shares are required to reconstruct the original secret.
 
 ## Features
 
@@ -86,7 +86,7 @@ a3b1c2d4e5f6789ab1c2d4e5f6789ab1c2d4e5f6789ab1c2d4e5f6789ab1c2d4
 
 ./split/output/share1.txt:
 ```
-pioneer zebra retreat learn stadium muffin sunset valve narrow leaf rescue close
+(1, 59109339584956588078088117219072885731423402664922725941501499477186864055372)
 ```
 
 #### Seed Phrase Example
